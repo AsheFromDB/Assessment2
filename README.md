@@ -19,7 +19,7 @@ Create framework.py is the framework for the drunk class
     Plot the density of drunks passing each point on the map.
     Save the density map as text to a file.
 
-Basic algorithmic roadmap.
+Basic algorithmic logic.
 
     For each drunk (a number between 0 and 250 will be assigned before leaving the bar), move the drunk randomly left/right/up/down into a randomly chosen loop. When it hits the correctly numbered house, stop the process.
 
