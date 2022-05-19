@@ -93,7 +93,7 @@ def update(self):
       #make every drunk move and record the coordinates in density map
       drunks[i].move() 
       drunks[i].makedensitymap(densitymap)
-      #prestep is for recording the steps that the drunk takes previously so that could hepl him do not go back  
+      #prestep is for recording the steps that the drunk takes previously so that could help him do not go back  
       if (len(drunks[i].prestepsx)>0  & len(drunks[i].prestepsy)>0):
         for j in range (len(drunks[i].prestepsx)):
         # if the present coords equal to one inside previous steps, than make him go back to th previous position and walk again
@@ -124,7 +124,7 @@ def run(): #Function for generating animation
 # def Stop(): # function for stopping the model at it's defined conclusion
 #     global root
 #     root.quit()        
-def dm(): # function for stopping the model at it's defined conclusion\
+def dm(): # function for creating density map
     matplotlib.pyplot.imshow(densitymap, alpha=0.8)
     
 def terminate():  # Function to force quit model
