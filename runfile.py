@@ -20,9 +20,7 @@ fig = matplotlib.pyplot.figure(figsize=(7, 7))
 ax = fig.add_axes([0, 0, 1, 1])
 
 #give each drunk a number
-for i in range (10,251,10):
-    numd.append(i)    
-num = random.choice(numd)
+
 
 #base map
 f = open('map.txt', newline='')
@@ -77,10 +75,12 @@ def makehomeloc(num,environment):
 
 
 #create drunks
+for i in range (10,260,10):
+    numd.append(i)       
 for j in range(num_of_drunks):
      makepubloc(environment)
-     makehomeloc(num, environment) 
-     drunks.append(framework.drunks(pubpointx,pubpointy,homepointx,homepointy,num,drunks))
+     makehomeloc(numd[j], environment) 
+     drunks.append(framework.drunks(pubpointx,pubpointy,homepointx,homepointy,numd[j],drunks))
      
      
      
@@ -90,18 +90,19 @@ def update(self):
     fig.clear()
     
     for i in range(num_of_drunks):
-      #make every drunk move and recor the coordinates in density map
+      #make every drunk move and record the coordinates in density map
       drunks[i].move() 
       drunks[i].makedensitymap(densitymap)
-      #prestep is for recording the steps that the drunk takes previously so that could hepl him do not go back
-      if ( bool(drunks[i].prestepsx)  & bool(drunks[i].prestepsy) ):
-        for x in drunks[i].prestepsx:
-          for y in drunks[i].prestepsy:  
+      #prestep is for recording the steps that the drunk takes previously so that could hepl him do not go back  
+      if (len(drunks[i].prestepsx)>0  & len(drunks[i].prestepsy)>0):
+        for j in range (len(drunks[i].prestepsx)):
         # if the present coords equal to one inside previous steps, than make him go back to th previous position and walk again
-            if (x == drunks[i].x & y == drunks[i].y):
+            if (drunks[i].prestepsx[j] == drunks[i].x & drunks[i].prestepsy[j] == drunks[i].y):
                 drunks[i].x = drunks[i].prestepsx[len(drunks[i].prestepsx)-1]
                 drunks[i].y = drunks[i].prestepsy[len(drunks[i].prestepsy)-1]
-                drunks[i].move()
+                drunks[i].move()  
+      
+      
 
           
           
